@@ -1,0 +1,72 @@
+---
+title: "Inequality Analysis of Incarceration Rates in the US"
+author: "Kasper Li"
+date: '2022-11-01'
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(readxl)
+incarceration_trends <- read_excel("incarceration_trends.xlsx")
+source("../source/a4-helpers.R")
+source("../source/analysis.R")
+```
+
+## Abstract 
+
+The United States has the highest incarceration rate in the world, with over 2.2 million people currently incarcerated. The vast majority of these individuals are men, and people of color are disproportionately represented. This data set provides an opportunity to examine patterns of inequality in the criminal justice system.
+
+## Introduction 
+
+The Vera Institute of Justice is a nonprofit organization that seeks to improve the justice system by conducting research and promoting reforms. The Vera Institute has released a data set on the incarcerated population in the United States, which includes data on the number of people incarcerated, the demographics of the incarcerated population, and the offense types for which people are incarcerated.
+
+The goal of this assignment is to use the Vera Institute data set to expose patterns of inequality in the United States justice system. Specifically, this report will answer the following questions:
+. What are the demographic characteristics of the incarcerated population?
+. What are the most common offenses for which people are incarcerated?
+. How has the incarcerated population changed over time?
+. What are the racial disparities in the incarcerated population?
+
+## Data Summary 
+There are 223,207,908 people incarcerated in the United States as of 2018. The vast majority of those incarcerated are men, with only about 11% of the incarcerated population being women. The average age of the incarcerated population is between 16-64years old.
+
+African Americans and Latinos make up a disproportionate share of the incarcerated population, with African Americans comprising about 34% of the incarcerated population and Latinos comprising about 14%. However, the majority of the incarcerated population is white, at about 52%.
+
+The incarcerated population has decreased significantly over the last few decades. In 1980, there were about 33.4 people incarcerated in the United States. By 2017, that number had decreased to  5 people.
+
+There are significant racial disparities in the incarcerated population. African Americans are incarcerated at a rate of about 3,074 per 100,000 people, while whites are incarcerated at a rate of about 7 per 100,000 people. Latinos are incarcerated at a rate of about 1,258 per 100,000 people.
+### Growth of the U.S. Prison Population
+```{r echo=FALSE, warning=FALSE}
+plot(Growth1)
+
+```
+By observing figure 1 above on the growth of jail population in U.S from 1970- 2018, we notice a steady growth in each year. The pattern shows an exponential growth upto a period around 2010-2011 where the population finally remains steady moving forward
+
+### Growth of Prison Population by State
+```{r echo=FALSE, warning=FALSE}
+plot(Growth2)
+```
+On observing jail total population growth by states by considering the figure 2 above, we observe that in some states such as CA have a higher growth rate than others such as KS where the growth rate is almost constant, no changes in population with time. 
+
+### Variable Comparison that Reveals Potential Pattern of Inequality
+#1.Inequality of Female Population by County
+```{r echo=FALSE, warning=FALSE}
+# <variable comparison that reveals potential patterns of inequality>
+plot(Female_inequality)
+```
+
+
+2. #Inequality of male Population by County
+
+```{r echo=FALSE, warning=FALSE}
+# <variable comparison that reveals potential patterns of inequality>
+plot(Male_inequality)
+
+```
+Here, we are considering the inequality of different genders in different counties. On observing figure 3 and figure 4 above, different counties have different male and female population. Some counties jail more female than male and some more male more than female. 
+
+
+### A Map that shows Potential Patterns of Inequality that vary Geographically
+```{r warning=FALSE}
+plot(Map)
+```
+Finally, we consider the geographical locations so as to compare the inequality in different counties within a particular state. highly darkened area represent a higher jail population and a small dark area represents a low jail population as shown in figure 5 above. 
