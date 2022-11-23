@@ -1,5 +1,5 @@
 library(tidyverse)
-
+library(ggplot2)
 # The functions might be useful for A4
 source("../source/a4-helpers.R")
 
@@ -99,17 +99,15 @@ Male_inequality<-jail_pop_county %>%
 ## Section 6  ---- 
 #----------------------------------------------------------------------------#
 # <a map shows potential patterns of inequality that vary geographically>
-jail_pop_state <- incarceration_trends %>%
-  filter(county_name %in% c("Autauga County", "Baldwin County", "Jefferson County", "Woodford County", "Decatur County", "Worth County"))
-# plot the data
-Map<-jail_pop_state %>%
-  ggplot(aes(x=year, y=total_jail_pop, colour = county_name)) +
-  geom_polygon() +
-  xlab("Year") + 
-  ylab("Total Jail Population") +
-  ggtitle("Variation of Jail Population by County") +
-  scale_fill_continuous(low = "white", high = "red") +
-  labs(caption = "figure 5. maps showing Inequality of total jail population by county")
+data = map_data("state")
+p <- ggplot(data = data,
+            mapping = aes(x = long, y = lat,
+                          group = group, fill = region))
+
+Map<-p + geom_polygon(color = "gray90", size = 0.1) +
+  coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+  guides(fill = FALSE) +
+  labs(caption = "figure 5. maps showing Inequality of total jail population by state")
 #----------------------------------------------------------------------------#
 
 ## Load data frame ---- 
